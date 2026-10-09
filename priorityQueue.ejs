@@ -1,0 +1,334 @@
+<!---<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <%for(let trial of allUndertrials){%>
+       <h2><%=trial.undertrial_name%></h2>
+       <ul>
+        <p><%=trial.jail_name%></p>
+        <p><%=trial.case_details.case_name%></p>
+        <p><%=trial.case_details.case_no%></p>
+        <p><%trial.status%></p>
+        <p><%=trial.data_quality%></p>
+        <p><%=trial.Review_status%></p>
+        <p>Days Remaining-</p>
+        <p>Action</p>
+        <p><%=trial.offense_details.offense_name%></p>
+        <p><%=trial.maxCustodyPeriodForOffense%></p>
+        <p><%=trial.case_details.custody_start_date%></p>
+        <a href="/undertrials/priorityQueue/<%=trial._id%>/auditTrail">
+        <button type="button">View Audit Trail</button>
+        </a>
+       </ul>
+    <%}%>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rihaee | Priority Queue</title>
+
+    <link rel="stylesheet" href="/css/priorityQueue.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            Riha<span>ee</span>
+        </div>
+
+        <div class="header-right">
+            Priority Queue
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <div class="page-heading">
+
+            <h1>Priority Queue</h1>
+
+            <p>
+                Cases requiring attention and legal review
+            </p>
+
+        </div>
+
+
+
+        <!-- CASES -->
+
+        <div class="cases">
+
+
+            <% if (allUndertrials.length === 0) { %>
+
+                <div class="empty">
+
+                    <h2>No Cases Found</h2>
+
+                    <p>
+                        There are currently no cases in the priority queue.
+                    </p>
+
+                </div>
+
+            <% } %>
+
+
+
+            <% for(let trial of allUndertrials){ %>
+
+
+                <div class="case-card">
+
+
+                    <!-- TOP -->
+
+                    <div class="case-header">
+
+                        <div>
+
+                            <h2>
+                                <%= trial.undertrial_name %>
+                            </h2>
+
+                            <p class="jail">
+                                <%= trial.jail_name %>
+                            </p>
+
+                        </div>
+
+
+                        <%
+
+                            let statusClass = "";
+
+                            if (trial.status === "urgent review") {
+
+                                statusClass = "urgent";
+
+                            } else if (trial.status === "threshold reached") {
+
+                                statusClass = "reached";
+
+                            } else if (trial.status === "approaching") {
+
+                                statusClass = "approaching";
+
+                            } else if (trial.status === "data conflict arised") {
+
+                                statusClass = "conflict";
+
+                            }
+
+                        %>
+
+
+                        <span class="status <%= statusClass %>">
+
+                            <%= trial.status %>
+
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- CASE INFORMATION -->
+
+                    <div class="case-info">
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Case
+                            </span>
+
+                            <span class="value">
+                                <%= trial.case_details.case_name %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Case Number
+                            </span>
+
+                            <span class="value">
+                                <%= trial.case_details.case_no %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Offense
+                            </span>
+
+                            <span class="value">
+                                <%= trial.offense_details.Offense_name %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Maximum Punishment
+                            </span>
+
+                            <span class="value">
+                                <%= trial.offense_details.maxCustodyPeriodForOffense %>
+                                years
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Custody Start Date
+                            </span>
+
+                            <span class="value">
+
+                                <%= new Date(
+                                    trial.case_details.custody_start_date
+                                ).toLocaleDateString('en-IN') %>
+
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Data Quality
+                            </span>
+
+                            <span class="value">
+                                <%= trial.data_quality %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Review Status
+                            </span>
+
+                            <span class="value">
+                                <%= trial.Review_status %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="info">
+
+                            <span class="label">
+                                Days Remaining
+                            </span>
+
+                            <span class="value days">
+                                To be calculated
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ACTION -->
+
+                    <div class="actions">
+
+
+                        <a
+                            href="/undertrials/priorityQueue/<%= trial._id %>/auditTrail"
+                        >
+
+                            <button type="button" class="audit-btn">
+
+                                View Audit Trail
+
+                            </button>
+
+                        </a>
+
+
+                        <a
+                            href="/undertrials/priorityQueue/<%= trial._id %>/caseIntelligence"
+                        >
+
+                            <button type="button" class="intelligence-btn">
+
+                                Case Intelligence
+
+                            </button>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            <% } %>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

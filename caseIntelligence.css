@@ -1,0 +1,880 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1e293b;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    height: 72px;
+    padding: 0 50px;
+
+    background: #111827;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.header-right {
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+
+    margin: 42px auto 70px;
+}
+
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    margin-bottom: 8px;
+
+    color: #2563eb;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.page-heading h1 {
+    margin-bottom: 10px;
+
+    color: #111827;
+
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+.page-heading > p:last-child {
+    color: #64748b;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   PRISONER CARD
+========================================= */
+
+.prisoner-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+    padding: 25px 30px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+.label {
+    margin-bottom: 7px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.prisoner-card h2 {
+    color: #111827;
+    font-size: 23px;
+}
+
+.value {
+    color: #334155;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   GENERAL CARD
+========================================= */
+
+.card {
+    margin-bottom: 22px;
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.section-label {
+    margin-bottom: 7px;
+
+    color: #2563eb;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-bottom: 7px;
+
+    color: #111827;
+    font-size: 22px;
+}
+
+.section-description {
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CURRENT CASE
+========================================= */
+
+.information-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+.information {
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.information .label {
+    margin-bottom: 8px;
+}
+
+.information .value {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.large-value {
+    font-size: 21px;
+}
+
+.large-value span {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   FLAGGING ANALYSIS
+========================================= */
+
+.flag-analysis-card {
+    padding: 30px;
+}
+
+.flag-analysis-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+/* Individual analysis box */
+
+.flag-factor {
+    display: flex;
+
+    min-height: 175px;
+
+    padding: 22px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 13px;
+
+    transition: 0.2s ease;
+}
+
+.flag-factor:hover {
+    border-color: #bfdbfe;
+
+    box-shadow: 0 5px 18px rgba(37, 99, 235, 0.08);
+
+    transform: translateY(-2px);
+}
+
+
+/* Number */
+
+.factor-number {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 17px;
+
+    background: #dbeafe;
+
+    border-radius: 9px;
+
+    color: #1d4ed8;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* Factor content */
+
+.factor-content {
+    flex: 1;
+}
+
+.factor-label {
+    margin-bottom: 9px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.factor-content h3 {
+    margin-bottom: 9px;
+
+    color: #111827;
+
+    font-size: 25px;
+}
+
+.factor-content h3 span {
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.factor-content > p:not(.factor-label) {
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+.factor-content strong {
+    color: #334155;
+}
+
+
+/* =========================================
+   ANALYSIS STATUS
+========================================= */
+
+.factor-note {
+    display: inline-block;
+
+    margin-top: 14px;
+    padding: 6px 10px;
+
+    background: #f1f5f9;
+
+    border-radius: 20px;
+
+    color: #475569;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.history-note {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.remaining-note {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.reached-note {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.threshold-date {
+    font-size: 21px !important;
+}
+
+
+/* =========================================
+   PREVIOUS CASE HISTORY
+========================================= */
+
+.previous-history-card {
+    padding: 30px;
+}
+
+
+/* Number of previous cases */
+
+.history-count {
+    min-width: 90px;
+
+    padding: 10px 15px;
+
+    text-align: center;
+
+    background: #eff6ff;
+
+    border: 1px solid #dbeafe;
+
+    border-radius: 10px;
+}
+
+.history-count strong {
+    display: block;
+
+    color: #1d4ed8;
+
+    font-size: 22px;
+}
+
+.history-count span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   HISTORY NOTICE
+========================================= */
+
+.history-notice {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+    padding: 15px 17px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.notice-icon {
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dbeafe;
+
+    border-radius: 50%;
+
+    color: #1d4ed8;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.history-notice strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #334155;
+
+    font-size: 13px;
+}
+
+.history-notice p {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PREVIOUS CASE LIST
+========================================= */
+
+.previous-cases-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* Individual previous case */
+
+.previous-case-card {
+    display: grid;
+
+    grid-template-columns:
+        65px
+        minmax(200px, 2fr)
+        120px
+        120px
+        150px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    transition: 0.2s ease;
+}
+
+.previous-case-card:hover {
+    border-color: #cbd5e1;
+
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06);
+}
+
+
+/* Case number */
+
+.case-index {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f5f9;
+
+    border-radius: 10px;
+}
+
+.case-index span {
+    color: #94a3b8;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.case-index strong {
+    margin-top: 3px;
+
+    color: #334155;
+
+    font-size: 17px;
+}
+
+
+/* Case name */
+
+.previous-case-main h3 {
+    margin-bottom: 7px;
+
+    color: #1e293b;
+
+    font-size: 15px;
+
+    line-height: 1.35;
+}
+
+.case-number {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.case-number strong {
+    color: #475569;
+}
+
+
+/* Date / status / outcome */
+
+.previous-case-detail {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.previous-case-detail span {
+    color: #94a3b8;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.previous-case-detail strong {
+    color: #334155;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   NO PREVIOUS HISTORY
+========================================= */
+
+.no-history-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px;
+}
+
+.no-history-icon {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dcfce7;
+
+    border-radius: 50%;
+
+    color: #166534;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.no-history-card h2 {
+    margin-bottom: 5px;
+
+    color: #166534;
+
+    font-size: 17px;
+}
+
+.no-history-card p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   FLAGGED MESSAGE
+========================================= */
+
+.flagged-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+    padding: 22px 25px;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 14px;
+}
+
+.flag-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f97316;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.flagged-card h2 {
+    margin-bottom: 5px;
+
+    color: #9a3412;
+
+    font-size: 17px;
+}
+
+.flagged-card p {
+    color: #7c2d12;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+}
+
+.actions a {
+    text-decoration: none;
+}
+
+.actions button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.back-btn {
+    background: #e2e8f0;
+
+    color: #334155;
+}
+
+.back-btn:hover {
+    background: #cbd5e1;
+}
+
+.report-btn {
+    background: #2563eb;
+
+    color: white;
+}
+
+.report-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .flag-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .previous-case-card {
+        grid-template-columns:
+            55px
+            1fr
+            1fr;
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .container {
+        width: 94%;
+
+        margin-top: 25px;
+    }
+
+    .page-heading h1 {
+        font-size: 27px;
+    }
+
+    .prisoner-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        flex-direction: column;
+    }
+
+    .previous-case-card {
+        grid-template-columns:
+            55px
+            1fr;
+
+        gap: 15px;
+    }
+
+    .previous-case-detail {
+        padding-top: 10px;
+
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .actions {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 12px;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+
+}

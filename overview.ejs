@@ -1,0 +1,383 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Daily Executive Summary</p>
+    <h1>What requires attention today?</h1>
+    <h2>Priority Cases</h2>
+    <%for(let trial of allUndertrials){%>
+       <h2><%=trial.undertrial_name%></h2>
+       <ul>
+        <p><%=trial.jail_name%></p>
+        <p><%=trial.case_details.case_name%></p>
+        <p><%=trial.case_details.case_no%></p>
+        <p><%trial.status%></p>
+        <p><%=trial.data_quality%></p>
+        <p><%=trial.Review_status%></p>
+        <p>Days Remaining-</p>
+        <p>Action</p>
+       </ul>
+    <%}%>
+    <a href="/undertrials/priorityQueue">
+    <button type="button">Priority Queue</button>
+    </a>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rihaee | Executive Dashboard</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            Riha<span>ee</span>
+        </div>
+
+        <div class="header-right">
+            Superintendent Dashboard
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <div class="welcome">
+
+            <h1>Daily Executive Summary</h1>
+
+            <p>
+                What requires attention today?
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <div class="summary">
+
+
+            <div class="summary-card total">
+
+                <p>Total Cases</p>
+
+                <h2>
+                    <%= allUndertrials.length %>
+                </h2>
+
+            </div>
+
+
+
+            <div class="summary-card urgent">
+
+                <p>Urgent Review</p>
+
+                <h2>
+                    <%= allUndertrials.filter(
+                        trial => trial.status === "urgent review"
+                    ).length %>
+                </h2>
+
+            </div>
+
+
+
+            <div class="summary-card warning">
+
+                <p>Threshold Reached</p>
+
+                <h2>
+                    <%= allUndertrials.filter(
+                        trial => trial.status === "threshold reached"
+                    ).length %>
+                </h2>
+
+            </div>
+
+
+
+            <div class="summary-card clean">
+
+                <p>Data Conflicts</p>
+
+                <h2>
+                    <%= allUndertrials.filter(
+                        trial => trial.data_quality === "conflict"
+                    ).length %>
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================= PRIORITY CASES ================= -->
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Priority Cases</h2>
+
+                <p>
+                    Cases requiring review or attention
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="cases">
+
+
+            <% if (allUndertrials.length === 0) { %>
+
+                <div class="empty">
+
+                    <h3>No priority cases</h3>
+
+                    <p>
+                        There are currently no cases requiring attention.
+                    </p>
+
+                </div>
+
+            <% } %>
+
+
+
+            <% for(let trial of allUndertrials){ %>
+
+
+                <div class="case-card">
+
+
+                    <!-- CASE HEADER -->
+
+                    <div class="case-top">
+
+                        <div>
+
+                            <h3>
+                                <%= trial.undertrial_name %>
+                            </h3>
+
+                            <p class="jail">
+                                <%= trial.jail_name %>
+                            </p>
+
+                        </div>
+
+
+
+                        <%
+
+                            let statusClass = "";
+
+                            if (trial.status === "urgent review") {
+
+                                statusClass = "urgent-review";
+
+                            }
+
+                            else if (trial.status === "threshold reached") {
+
+                                statusClass = "threshold-reached";
+
+                            }
+
+                            else if (trial.status === "approaching") {
+
+                                statusClass = "approaching";
+
+                            }
+
+                            else if (trial.status === "data conflict arised") {
+
+                                statusClass = "conflict";
+
+                            }
+
+                        %>
+
+
+                        <span class="status <%= statusClass %>">
+
+                            <%= trial.status %>
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- CASE DETAILS -->
+
+                    <div class="case-details">
+
+
+                        <div class="detail">
+
+                            <span>Case</span>
+
+                            <span>
+                                <%= trial.case_details.case_name %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <span>Case Number</span>
+
+                            <span>
+                                <%= trial.case_details.case_no %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <span>Data Quality</span>
+
+                            <span>
+                                <%= trial.data_quality %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <span>Review Status</span>
+
+                            <span>
+                                <%= trial.Review_status %>
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <span>Days Remaining</span>
+
+                            <span>
+                                To be calculated
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ACTION -->
+
+                    <div class="case-action">
+
+                        <span class="review">
+
+                            Action required based on case status.
+
+                        </span>
+
+
+                        <button class="action-btn">
+
+                            Review Case
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            <% } %>
+
+
+        </div>
+
+
+
+        <!-- ================= PRIORITY QUEUE ================= -->
+
+        <div class="priority-section">
+
+
+            <div>
+
+                <h2>Priority Queue</h2>
+
+                <p>
+                    View all cases requiring detailed review and assessment.
+                </p>
+
+            </div>
+
+
+
+            <a
+                href="/undertrials/priorityQueue"
+                class="priority-btn"
+            >
+
+                Open Priority Queue →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
